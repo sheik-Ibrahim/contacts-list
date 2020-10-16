@@ -35,4 +35,3 @@ if __name__ == '__main__':
     run_db_checks()
 
     print(start_app())
-
