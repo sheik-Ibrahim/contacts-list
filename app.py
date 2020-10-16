@@ -1,4 +1,5 @@
-# Run the app by typing "python app.py" on your terminal.
-print('Hello, World!');
-print('App ready')
+import sqlite3
 
+connection = sqlite3.connect('contacts.db')
+
+cursor = connection.cursor()
