@@ -1,37 +1,30 @@
-from db import DatabaseManager
+import db
+import statements
+from contacts import Contact
 
 
-def start_app():
-    if view_contacts():
-        db = DatabaseManager()
+def menu():
+    connection = db.connect()
+    db.create_tables(connection)
 
-        return db.all()
+    while (option := input(statements.MENU_PROMPT)) != '4':
+        if option == '1':
+            name = input("What is the name of the contact? ")
+            number = input("What is the phone number of the contact? ")
 
-    return add_contact()
+            db.add(connection, name, number)
 
-
-def view_contacts():
-    view = input('Would you like to view your contacts list? (y/n) ')
-
-    return True if view == 'y' else False
-
-
-def add_contact():
-    name = input('What is the name of the contact? ')
-    number = input('What is the phone number of the contact? ')
-
-    db = DatabaseManager()
-    db.create(name, number)
-
-    return db.get(name)
-
-
-def run_db_checks():
-    db = DatabaseManager()
-    db.check_db()
+            print("New contact added to list.")
+        elif option == '2':
+            for name, number in db.get_all(connection):
+                contact = Contact(name, number)
+                print(contact.details())
+        elif option == '3':
+            name = input("What is the name of the contact? ")
+            (contact_name, contact_number) = db.get_by_name(connection, name)
+            contact = Contact(contact_name, contact_number)
+            print(contact.details())
 
 
 if __name__ == '__main__':
-    run_db_checks()
-
-    print(start_app())
+    menu()
