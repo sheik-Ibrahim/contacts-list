@@ -15,7 +15,7 @@ To work on this project please `fork` this repository and `clone` it from the fo
 
 ### Contributions
 
-- Please make sure to Follow Python PEP 8 coding standards when working on the project.
+- Please make sure to Follow *Python PEP 8* coding standards when working on the project.
 - Make sure your pull requests are properly described.
     Ex:
     **Added user input reader. New method added to accept and store user input data.**
