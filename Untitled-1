@@ -1,0 +1,6 @@
+export default {
+    sauce:function(){
+        alert('hey there');
+        console.log('whts up bro')
+    }
+}
